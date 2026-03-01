@@ -1,4 +1,5 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct EmptyStateView: View {
     @Environment(AppState.self) private var appState

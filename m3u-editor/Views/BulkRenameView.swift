@@ -22,7 +22,7 @@ struct BulkRenameView: View {
             HStack {
                 Image(systemName: "textformat")
                     .font(.title2)
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Bulk Rename")
                         .font(.headline)

@@ -43,7 +43,7 @@ struct ExportOptionsView: View {
             HStack {
                 Image(systemName: "square.and.arrow.up")
                     .font(.title2)
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Export Playlist")
                         .font(.headline)
@@ -67,13 +67,13 @@ struct ExportOptionsView: View {
                         ForEach(ExportService.Format.allCases) { fmt in
                             HStack {
                                 Image(systemName: fmt.systemImage)
-                                    .foregroundStyle(.accent)
+                                    .foregroundStyle(Color.accentColor)
                                     .frame(width: 20)
                                 Text(fmt.rawValue)
                                 Spacer()
                                 if format == fmt {
                                     Image(systemName: "checkmark")
-                                        .foregroundStyle(.accent)
+                                        .foregroundStyle(Color.accentColor)
                                 }
                             }
                             .contentShape(Rectangle())

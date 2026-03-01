@@ -29,7 +29,7 @@ struct SidebarView: View {
                 Section("Channels") {
                     SidebarNavRow(
                         icon: "list.bullet",
-                        iconColor: .accent,
+                        iconColor: .accentColor,
                         label: "All Channels",
                         badge: playlist.channels.count
                     )
@@ -52,7 +52,7 @@ struct SidebarView: View {
                         SidebarNavRow(
                             icon: filter.systemImage,
                             iconColor: filter.color,
-                            label: filter.name,
+                            label: filter.rawValue,
                             badge: playlist.channels.filter { filter.matches($0) }.count
                         )
                         .tag(SidebarItem.smartFilter(filter) as SidebarItem?)
@@ -78,7 +78,7 @@ private struct PlaylistRow: View {
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "play.rectangle")
-                .foregroundStyle(isActive ? .accent : .secondary)
+                .foregroundStyle(isActive ? Color.accentColor : .secondary)
                 .frame(width: 16)
 
             VStack(alignment: .leading, spacing: 1) {

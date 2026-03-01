@@ -16,7 +16,7 @@ struct M3UParser {
 
     // MARK: - Parsing
 
-    static func parse(url: URL) throws -> [M3UChannel] {
+    nonisolated static func parse(url: URL) throws -> [M3UChannel] {
         let data = try Data(contentsOf: url)
         let content = String(data: data, encoding: .utf8)
             ?? String(data: data, encoding: .isoLatin1)
@@ -25,7 +25,7 @@ struct M3UParser {
         return try parse(string: content)
     }
 
-    static func parse(string: String) throws -> [M3UChannel] {
+    nonisolated static func parse(string: String) throws -> [M3UChannel] {
         guard !string.isEmpty else { throw M3UParseError.emptyContent }
 
         let lines = string.components(separatedBy: .newlines)
@@ -62,7 +62,7 @@ struct M3UParser {
 
     // MARK: - EXTINF parsing
 
-    private static func parseExtInf(line: String) -> M3UChannel {
+    private nonisolated static func parseExtInf(line: String) -> M3UChannel {
         let content = String(line.dropFirst("#EXTINF:".count))
 
         var channel = M3UChannel()
@@ -97,7 +97,7 @@ struct M3UParser {
     }
 
     /// Returns the index of the last comma that is NOT inside double quotes.
-    private static func lastUnquotedCommaIndex(in str: String) -> String.Index? {
+    private nonisolated static func lastUnquotedCommaIndex(in str: String) -> String.Index? {
         var inQuotes = false
         var result: String.Index? = nil
         for idx in str.indices {
@@ -111,7 +111,7 @@ struct M3UParser {
     }
 
     /// Parses `key="value" key2="value2" ...` attribute strings.
-    private static func parseAttributes(_ str: String) -> [String: String] {
+    private nonisolated static func parseAttributes(_ str: String) -> [String: String] {
         var attrs: [String: String] = [:]
         var remaining = str[str.startIndex...]
 
@@ -141,7 +141,7 @@ struct M3UParser {
 
     // MARK: - Serialization
 
-    static func serialize(channels: [M3UChannel], includeDisabled: Bool = true) -> String {
+    nonisolated static func serialize(channels: [M3UChannel], includeDisabled: Bool = true) -> String {
         var lines = ["#EXTM3U"]
 
         for channel in channels {

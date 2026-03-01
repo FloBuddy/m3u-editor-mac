@@ -34,7 +34,7 @@ struct ExportService {
 
     // MARK: - Export content generation
 
-    static func export(
+    nonisolated static func export(
         channels: [M3UChannel],
         format: Format,
         includeDisabled: Bool = true
@@ -50,7 +50,7 @@ struct ExportService {
 
     // MARK: - Formats
 
-    private static func exportCSV(_ channels: [M3UChannel]) -> String {
+    private nonisolated static func exportCSV(_ channels: [M3UChannel]) -> String {
         let header = "Title,TVG Name,TVG ID,Group,Logo URL,Stream URL,Enabled"
         let rows = channels.map { ch in
             [ch.title, ch.tvgName, ch.tvgId, ch.groupTitle,
@@ -61,14 +61,14 @@ struct ExportService {
         return ([header] + rows).joined(separator: "\n")
     }
 
-    private static func csvEscape(_ value: String) -> String {
+    private nonisolated static func csvEscape(_ value: String) -> String {
         guard value.contains(",") || value.contains("\"") || value.contains("\n") else {
             return value
         }
         return "\"" + value.replacingOccurrences(of: "\"", with: "\"\"") + "\""
     }
 
-    private static func exportJSON(_ channels: [M3UChannel]) -> String {
+    private nonisolated static func exportJSON(_ channels: [M3UChannel]) -> String {
         let items = channels.map { ch -> [String: Any] in
             var item: [String: Any] = [
                 "title": ch.title,
@@ -90,7 +90,7 @@ struct ExportService {
         return str
     }
 
-    private static func exportTXT(_ channels: [M3UChannel]) -> String {
+    private nonisolated static func exportTXT(_ channels: [M3UChannel]) -> String {
         channels.enumerated().map { i, ch in
             let name  = ch.displayName
             let group = ch.groupTitle.isEmpty ? "" : " [\(ch.groupTitle)]"
