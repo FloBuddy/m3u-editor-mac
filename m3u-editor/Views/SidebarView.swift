@@ -29,7 +29,7 @@ struct SidebarView: View {
                 Section("Channels") {
                     SidebarNavRow(
                         icon: "list.bullet",
-                        iconColor: .accentColor,
+                        iconColor: .accent,
                         label: "All Channels",
                         badge: playlist.channels.count
                     )

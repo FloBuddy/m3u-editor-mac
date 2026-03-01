@@ -216,7 +216,7 @@ private struct StatusCell: View {
     private var statusColor: Color {
         switch status {
         case .unknown:   return .secondary
-        case .checking:  return .accentColor
+        case .checking:  return .blue
         case .online:    return .green
         case .redirect:  return .orange
         case .offline:   return .red
