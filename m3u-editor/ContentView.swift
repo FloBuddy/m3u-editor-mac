@@ -1,24 +1,8 @@
-//
-//  ContentView.swift
-//  m3u-editor
-//
-//  Created by Florin Ilie on 01.03.26.
-//
-
+// ContentView is the original Xcode placeholder — logic lives in MainView.
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        MainView()
     }
-}
-
-#Preview {
-    ContentView()
 }
